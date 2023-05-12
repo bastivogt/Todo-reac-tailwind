@@ -28,14 +28,14 @@ export default function TodoAdd({
         <input
           value={inputText}
           placeholder={placeholder}
-          className="basis-3/4 border border-sky-500 focus:border-sky-700 p-6 text outline-none transition-all"
+          className="basis-full border border-sky-500 focus:border-sky-700 p-6 text outline-none transition-all"
           type="text"
           onChange={(evt) => setInputText(evt.target.value)}
           onKeyUp={enterHandler}
         />
         <button
           onClick={addButtonClickHandler}
-          className="basis-1/4 btn-primary"
+          className="basis-60 btn-primary"
         >
           Add Todo
         </button>
