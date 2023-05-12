@@ -13,7 +13,7 @@ function App() {
   // mount
   useEffect(() => {
     //mount = true;
-    console.log("MOUNT");
+    //console.log("MOUNT");
     console.log(loadTodos());
     const storageTodos = loadTodos();
     if (storageTodos) {
@@ -31,7 +31,7 @@ function App() {
   }, [todos]);
 
   function onUpdateTodos() {
-    console.log("ON UPDATE TODOS");
+    //console.log("ON UPDATE TODOS");
     saveTodos(todos);
   }
 
@@ -75,12 +75,24 @@ function App() {
     setTodos(newTodos);
   }
 
+  function onResetHandler() {
+    setTodos([]);
+  }
+
   return (
     <>
       <div className="container mx-auto p-2">
         <h1>My Todos</h1>
         <br />
         <TodoAdd onAddTodo={onAddTodoHandler}></TodoAdd>
+        <br />
+        <button
+          onClick={onResetHandler}
+          className="btn-primary bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600"
+        >
+          Reset
+        </button>
+        <br />
         <br />
         <TodoList
           todos={todos}
