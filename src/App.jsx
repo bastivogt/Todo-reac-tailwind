@@ -78,7 +78,7 @@ function App() {
   return (
     <>
       <div className="container mx-auto p-2">
-        <h1>My Todolist</h1>
+        <h1>My Todos</h1>
         <br />
         <TodoAdd onAddTodo={onAddTodoHandler}></TodoAdd>
         <br />

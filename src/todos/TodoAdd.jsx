@@ -24,17 +24,22 @@ export default function TodoAdd({
   return (
     <div className="TodoAdd">
       {heading && <h2>{heading}</h2>}
-      <input
-        value={inputText}
-        placeholder={placeholder}
-        className="border border-sky-500 focus:border-sky-700 p-2 text outline-none transition-all"
-        type="text"
-        onChange={(evt) => setInputText(evt.target.value)}
-        onKeyUp={enterHandler}
-      />
-      <button onClick={addButtonClickHandler} className="btn-primary">
-        Add Todo
-      </button>
+      <div className="flex flex-row">
+        <input
+          value={inputText}
+          placeholder={placeholder}
+          className="basis-3/4 border border-sky-500 focus:border-sky-700 p-6 text outline-none transition-all"
+          type="text"
+          onChange={(evt) => setInputText(evt.target.value)}
+          onKeyUp={enterHandler}
+        />
+        <button
+          onClick={addButtonClickHandler}
+          className="basis-1/4 btn-primary"
+        >
+          Add Todo
+        </button>
+      </div>
     </div>
   );
 }
