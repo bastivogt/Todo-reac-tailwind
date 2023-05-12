@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-export default function TodoAdd({ onAddTodo, placeholder = "New Todo" }) {
+export default function TodoAdd({
+  onAddTodo,
+  placeholder = "New Todo",
+  heading = "New Todo",
+}) {
   const [inputText, setInputText] = useState("");
 
   function addButtonClickHandler(evt) {
@@ -19,7 +23,7 @@ export default function TodoAdd({ onAddTodo, placeholder = "New Todo" }) {
   }
   return (
     <div className="TodoAdd">
-      <h2>TodoAdd</h2>
+      {heading && <h2>{heading}</h2>}
       <input
         value={inputText}
         placeholder={placeholder}

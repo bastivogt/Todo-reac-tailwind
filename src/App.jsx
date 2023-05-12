@@ -1,12 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoAdd from "./todos/TodoAdd";
 import TodoList from "./todos/TodoList";
 
+let mount = false;
+
 function App() {
   const [todos, setTodos] = useState([
-    { id: 1, title: "React lernen", done: false },
-    { id: 2, title: "Training", done: true },
+    /*{ id: 1, title: "React lernen", done: false },
+    { id: 2, title: "Training", done: true },*/
   ]);
+
+  // mount
+  useEffect(() => {
+    //mount = true;
+    console.log("MOUNT");
+    console.log(loadTodos());
+    const storageTodos = loadTodos();
+    if (storageTodos) {
+      setTodos([...storageTodos]);
+    } else {
+    }
+  }, []);
+
+  // update todos
+  useEffect(() => {
+    if (mount) {
+      onUpdateTodos();
+    }
+    mount = true;
+  }, [todos]);
+
+  function onUpdateTodos() {
+    console.log("ON UPDATE TODOS");
+    saveTodos(todos);
+  }
 
   function onAddTodoHandler(title) {
     /*let newTodos = [];
@@ -63,6 +90,15 @@ function App() {
       </div>
     </>
   );
+}
+
+function saveTodos(todos) {
+  window.localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function loadTodos() {
+  const storageTodos = window.localStorage.getItem("todos");
+  return JSON.parse(storageTodos);
 }
 
 export default App;
